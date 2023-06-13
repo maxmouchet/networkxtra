@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "networkxtra"
+version = "1.0.0"
+description = "Extra functions for networkx."
+authors = [
+    "Maxime Mouchet <max@maxmouchet.com>",
+    "Matthieu Gouel <matthieu.gouel@lip6.fr>"
+]
+homepage = "https://github.com/maxmouchet/networkxtra"
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+networkx = "^3.1"
+numpy = "^1.24.3"
+pycairo = "^1.23.0"
+tqdm = {version = "^4.65.0", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.3.2"
+
+[tool.poetry.extras]
+tqdm = ["tqdm"]
+
+[tool.ruff]
+ignore = ["E501"]
+select = ["E", "F", "I"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

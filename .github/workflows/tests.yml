@@ -1,0 +1,27 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - uses: dioptra-io/setup-poetry-action@v1
+      - name: Install package
+        run: poetry install
+      - name: Run tests
+        run: poetry run pytest
+
+  pypi:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dioptra-io/publish-python-action@v1
+        with:
+          password: ${{ secrets.PYPI_PASSWORD }}
+          upload: ${{ startsWith(github.ref, 'refs/tags/v') }}
