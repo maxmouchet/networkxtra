@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "networkxtra"
-version = "1.0.0"
+version = "1.0.1"
 description = "Extra functions for networkx."
 authors = [
     "Maxime Mouchet <max@maxmouchet.com>",
